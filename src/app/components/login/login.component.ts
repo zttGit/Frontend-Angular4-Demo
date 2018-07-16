@@ -18,16 +18,21 @@ export class LoginComponent implements OnInit {
     const _self = this;
     this.loginService.sendCredentials(this.model).subscribe(
       (data) => {
-        localStorage.setItem('token', JSON.parse(JSON.stringify(data))._body);
+        console.log(JSON.parse(JSON.stringify(data))); // 将对象转化为string，再将string转为对象
+        localStorage.setItem('token',  JSON.parse(JSON.stringify(data))); // sendCredentials返回token字符串，并存储到本地
+        // localStorage.setItem('token', JSON.parse(JSON.stringify(data))._body); // 出错
         _self.loginService.sendToken(localStorage.getItem('token')).subscribe(
-          (data1) => {
+          (data1) => { // 服务端返回授权信息
+            console.log(data1);
             _self.currentUserName = _self.model.username;
+            console.log(_self.currentUserName);
             localStorage.setItem('currentUserName', _self.model.username);
             _self.model.username = '';
             _self.model.password = '';
           }
         );
-      }, (error) => {
+      },
+      (error) => {
         console.log(error);
       }
     );

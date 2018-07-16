@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import { MyAlbumComponent } from './components/my-album/my-album.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
     SidePanelComponent,
     PhotoRowComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MyAlbumComponent
   ],
   imports: [
     BrowserModule,

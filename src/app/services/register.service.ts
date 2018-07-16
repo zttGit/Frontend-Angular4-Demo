@@ -15,7 +15,7 @@ export class RegisterService {
   };
   sendUser(user: User) {
       const body = JSON.stringify(user);
-      return this.http.post('http://localhost:8080/user/register', body, this.httpOptions);
+      return this.http.post('/api/user/register', body, this.httpOptions);
     }
 
 

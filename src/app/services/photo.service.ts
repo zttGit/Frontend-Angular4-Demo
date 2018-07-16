@@ -2,13 +2,17 @@ import { Photo } from './../models/photo';
 import { Headers } from '@angular/http';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class PhotoService {
 
     constructor(private http: HttpClient) { }
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
     getPhotoByUser(user: User) {
       return this.http.get(`/rest/photo/user`);
         // const url = 'http://localhost:8080/rest/photo/user';
@@ -42,7 +46,7 @@ export class PhotoService {
 
     getPhotos() {
         const url = 'http://localhost:8080/photo/allPhotos';
-        return this.http.get(`/photo/allPhotos`);
+        return this.http.get(url);
     }
 
 }

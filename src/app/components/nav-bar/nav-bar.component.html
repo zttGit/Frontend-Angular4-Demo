@@ -4,20 +4,21 @@
       <img src="./../../assets/image/logo.png" alt="">
     </a>
     <a class="item" routerLink="home">
-      <h2>Zhu</h2>
+      <h2>Lagoon</h2>
     </a>
     <a class="item" routerLink="home">
       Home
     </a>
-    <a  class="item" routerLink="my-album">
+    <a *ngIf="login1Service.checkLogin()" class="item" routerLink="my-album">
       My Album
     </a>
   </div>
   <div class="right menu">
-    <a  class="item" routerLink="register">
+    <a *ngIf="!login1Service.checkLogin()" class="item" routerLink="register">
       Register
     </a>
-    <a class="item" routerLink="login">
+    <a class="item" routerLink="login" (click)="onClick()">
+      {{login1Service.checkLogin()? 'Logout' : 'Login'}}
     </a>
   </div>
 </div>

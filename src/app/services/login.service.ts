@@ -1,27 +1,30 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import {HttpClientTestingBackend} from '@angular/common/http/testing/src/backend';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
 
     constructor(private http: HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
+
     sendCredentials(model) {
       const body = JSON.stringify(model);
-      return this.http.post('/user/login', body);
-        // const tokenUrl = 'http://localhost:8080/user/login';
-        // const header1 = new Headers({'Content-Type': 'application/json'});
-        //
-        // return this.http.post(tokenUrl, JSON.stringify(model), {headers: header1});
+      return this.http.post('/api/user/login', body, this.httpOptions);
     }
 
     sendToken(token) {
-      return this.http.get('/rest/user/users');
-        // const userUrl = 'http://localhost:8080/rest/user/users';
-        // const header2 = new Headers({'Authorization': 'Bearer ' + token});
-        //
-        // return this.http.get(userUrl, {headers: header2});
+     const httpOptions2 = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + token,
+        })
+      };
+      return this.http.get('/api/rest/user/users', httpOptions2);
     }
 
     checkLogin() {

@@ -3,6 +3,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {MyAlbumComponent} from './components/my-album/my-album.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent},
       { path: 'register', component: RegisterComponent},
       { path: 'login', component: LoginComponent},
+      { path: 'my-album', component: MyAlbumComponent},
     ]
   }
 ];
