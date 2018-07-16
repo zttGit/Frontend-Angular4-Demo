@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../../services/login.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {LoginService} from '../../services/login.service';
 export class LoginComponent implements OnInit {
   public model = { 'username': '', 'password': '' };
   public currentUserName;
-  constructor(public loginService: LoginService) { }
+  constructor(public loginService: LoginService, private router: Router ) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
             _self.model.password = '';
           }
         );
+        setTimeout(() => { // 登陆成功，0.5秒后跳转至用于主页
+          this.router.navigate(['/my-album']);
+        }, 500);
       },
       (error) => {
         console.log(error);

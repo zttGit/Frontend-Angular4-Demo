@@ -10,17 +10,12 @@ export class PhotoService {
     constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json'
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')  // 每次请求都要带上token
     })
   };
     getPhotoByUser(user: User) {
-      return this.http.get(`/rest/photo/user`);
-        // const url = 'http://localhost:8080/rest/photo/user';
-        // const header = new Headers({
-        //     'Content-Type': 'application/json',
-        //     'Authorization': 'Bearer ' + localStorage.getItem('token')
-        // });
-        // return this.http.post(url, JSON.stringify(user), { headers: header });
+      return this.http.post(`/api/rest/photo/user`, JSON.stringify(user), this.httpOptions);
     }
 
     getPhotoById(photoId: number) {
@@ -44,9 +39,13 @@ export class PhotoService {
         // return this.http.post(url, JSON.stringify(photo), { headers: header });
     }
 
+  sendPhoto(photo: Photo) {
+    return this.http.post('/api/rest/photo/add', JSON.stringify(photo), this.httpOptions);
+  }
+
     getPhotos() {
-        const url = 'http://localhost:8080/photo/allPhotos';
-        return this.http.get(url);
+        const url = '/api/photo/allPhotos';
+        return this.http.get(url, this.httpOptions);
     }
 
 }

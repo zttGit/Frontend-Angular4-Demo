@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import { MyAlbumComponent } from './components/my-album/my-album.component';
+import { AddPhotoComponent } from './components/add-photo/add-photo.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MyAlbumComponent } from './components/my-album/my-album.component';
     PhotoRowComponent,
     LoginComponent,
     RegisterComponent,
-    MyAlbumComponent
+    MyAlbumComponent,
+    AddPhotoComponent
   ],
   imports: [
     BrowserModule,

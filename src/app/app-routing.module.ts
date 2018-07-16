@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MyAlbumComponent} from './components/my-album/my-album.component';
+import {AddPhotoComponent} from './components/add-photo/add-photo.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent},
       { path: 'login', component: LoginComponent},
       { path: 'my-album', component: MyAlbumComponent},
+      { path: 'add-photo', component: AddPhotoComponent},
     ]
   }
 ];
