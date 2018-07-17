@@ -12,12 +12,13 @@ export class UserService {
         'Content-Type':  'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token')  // 每次请求都要带上token
       })
-    };
+    }
     getUserByName(userName: string) {
-      return this.http.post(`/api/rest/user/userName`, JSON.stringify(userName), this.httpOptions);
+      return this.http.post('/api/rest/user/userName', JSON.stringify(userName), this.httpOptions);
     }
 
     updateUser(user: User) {
+      return this.http.post('/api/rest/user/update', JSON.stringify(user), this.httpOptions);
         // const url = 'http://localhost:8080/rest/user/update';
         // const header = new Headers({
         //     'Content-Type': 'application/json',

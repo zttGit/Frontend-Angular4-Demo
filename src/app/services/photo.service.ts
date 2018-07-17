@@ -1,5 +1,4 @@
 import { Photo } from './../models/photo';
-import { Headers } from '@angular/http';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -19,13 +18,7 @@ export class PhotoService {
     }
 
     getPhotoById(photoId: number) {
-      return this.http.get(`/rest/photo/photoId/${photoId}`);
-        // const url = 'http://localhost:8080/rest/photo/photoId';
-        // const header = new Headers({
-        //     'Content-Type': 'application/json',
-        //     'Authorization': 'Bearer ' + localStorage.getItem('token')
-        // });
-        // return this.http.post(url, JSON.stringify(photoId), { headers: header });
+      return this.http.get(`/api/rest/photo/${photoId}`, this.httpOptions);
     }
 
     updatePhoto(photo: Photo) {
@@ -39,7 +32,7 @@ export class PhotoService {
         // return this.http.post(url, JSON.stringify(photo), { headers: header });
     }
 
-  sendPhoto(photo: Photo) {
+  sendPhoto(photo: Photo) {  // 将图片路径写入数据库
     return this.http.post('/api/rest/photo/add', JSON.stringify(photo), this.httpOptions);
   }
 

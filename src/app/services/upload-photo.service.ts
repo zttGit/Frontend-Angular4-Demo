@@ -10,7 +10,7 @@ export class UploadPhotoService implements OnInit {
         this.fileToUpload = [];
     }
 
-    upload() {
+    upload() { // 将图片上传到服务器端
         const url = '/api/rest/photo/upload';
         this.makeFileRequest(url, [], this.fileToUpload).then(
             (result) => {}

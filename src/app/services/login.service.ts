@@ -2,6 +2,7 @@ import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import {HttpClientTestingBackend} from '@angular/common/http/testing/src/backend';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class LoginService {

@@ -19,22 +19,22 @@ export class MyAlbumComponent implements OnInit {
               private userService: UserService) { }
 
   ngOnInit() {
-    const _self = this;
     this.userService.getUserByName(localStorage.getItem('currentUserName')).subscribe(
-      (user) => {
-        console.log(user);
-        _self.user = user;
-        _self.photoService.getPhotoByUser(_self.user).subscribe(
+      (user: any) => {
+        this.user = user;
+        this.photoService.getPhotoByUser(user).subscribe(
           (photos: any) => {
-            _self.photos = photos;
+            console.log(photos);
+            this.photos = photos;
           }
         );
-      }, (error) => { console.log(error);
+      },
+      (error) => { console.log(error);
       }
     );
   }
   onSelect(photo: Photo) {
     this.selectedPhoto = photo;
-    // this.router.navigate(['/image-detail', this.selectedPhoto.photoId]);
+    this.router.navigate(['/image-detail', this.selectedPhoto.photoId]);
   }
 }

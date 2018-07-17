@@ -24,7 +24,6 @@ export class PhotoListComponent implements OnInit {
     this.photoService.getPhotos().subscribe(
       (data: any) => {
         this.photos = data;
-        console.log(data);
         if (this.photos.length < 1) {
           this.message = '没有内容';
         }

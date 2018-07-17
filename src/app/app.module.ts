@@ -15,6 +15,8 @@ import {HttpModule} from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import { MyAlbumComponent } from './components/my-album/my-album.component';
 import { AddPhotoComponent } from './components/add-photo/add-photo.component';
+import { ImageDetailComponent } from './components/image-detail/image-detail.component';
+import { ImageCommentsComponent } from './components/image-comments/image-comments.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AddPhotoComponent } from './components/add-photo/add-photo.component';
     LoginComponent,
     RegisterComponent,
     MyAlbumComponent,
-    AddPhotoComponent
+    AddPhotoComponent,
+    ImageDetailComponent,
+    ImageCommentsComponent
   ],
   imports: [
     BrowserModule,
